@@ -1,0 +1,14 @@
+SX energy1(int i, int n, SX& fin, SX& J, SX& U0, SX& dU, SX& mu, SX& theta);
+
+SX energy2(int i, int n, SX& fin, SX& J, SX& U0, SX& dU, SX& mu, SX& theta);
+
+SX energy3(int i, int n, SX& fin, SX& J, SX& U0, SX& dU, SX& mu, SX& theta);
+
+SX energy4(int i, int n, SX& fin, SX& J, SX& U0, SX& dU, SX& mu, SX& theta);
+
+SX energy5(int i, int n, SX& fin, SX& J, SX& U0, SX& dU, SX& mu, SX& theta);
+
+SX energy6(int i, int n, SX& fin, SX& J, SX& U0, SX& dU, SX& mu, SX& theta);
+
+SX energy7(int i, int n, SX& fin, SX& J, SX& U0, SX& dU, SX& mu, SX& theta);
+
