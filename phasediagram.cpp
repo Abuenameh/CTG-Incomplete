@@ -453,14 +453,14 @@ void phasepoints(worker_input* input, worker_point* point_in, worker_output* out
         }
 //    }
 
-    SumFunction Ef(Es);
-    Function nlp = Ef.create();
+//    SumFunction Ef(Es);
+    Function nlp;// = Ef.create();
 
-    SumFunction Edf(Edfs);
-    Function gradF = Edf.create();
+//    SumFunction Edf(Edfs);
+    Function gradF;// = Edf.create();
 
-    SumFunction gdf(gdfs);
-    Function jacG = gdf.create();
+//    SumFunction gdf(gdfs);
+    Function jac;//G = gdf.create();
 
     SumFunction Enormgradf(Enorms);
     Function nlpnormgrad = Enormgradf.create();
@@ -468,9 +468,9 @@ void phasepoints(worker_input* input, worker_point* point_in, worker_output* out
     chdir("..");
 
     //    ExternalFunction nlp("nlp");
-    Dict solverDict = make_dict("grad_f", gradF, "jac_g", jacG, "hessian_approximation", "limited-memory", "linear_solver", "ma86", "print_level", 0, "print_time", false);
-    solverDict["sb"] = "yes";
-    NlpSolver solver("solver", "ipopt", nlp, solverDict);
+//    Dict solverDict = make_dict("grad_f", gradF, "jac_g", jacG, "hessian_approximation", "limited-memory", "linear_solver", "ma86", "print_level", 0, "print_time", false);
+//    solverDict["sb"] = "yes";
+//    NlpSolver solver("solver", "ipopt", nlp, solverDict);
 
     //    ExternalFunction nlpnorm("nlpnorm");
     //    Function grad = nlpnorm.gradient();
@@ -1018,8 +1018,11 @@ int main(int argc, char** argv) {
                     xi[j] = (1 + D * uni(rng));
                 }
             }
+            
+            string version = "old";
 
             boost::filesystem::ofstream os(resfile);
+            printMath(os, "version", resi, version);
             printMath(os, "Lres", resi, L);
             printMath(os, "nmaxres", resi, nmax);
             printMath(os, "seed", resi, seed);
@@ -1591,13 +1594,13 @@ int main(int argc, char** argv) {
             }
 
             //        points.push({2.03922e11, 0.2667});
-            int nW = 10;
+            int nW = 280;
             for (int i = 0; i < nW; i++) {
-            double Wi = 2.32636e11;//2e10;
-            double Wf = 2.68095e11;//1.5e11;
+            double Wi = 2.e11;//2.32636e11;//2e10;
+            double Wf = 2.5e11;//2.68095e11;//1.5e11;
                 double W = Wi + i * (Wf - Wi) / (nW - 1);
 //                            points.push({W, 0.9});
-            points.push({W, 0.3});
+            points.push({W, 0.2});
             }
 //            points.push({2e10, 0.9});
 
